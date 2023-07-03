@@ -6,6 +6,11 @@
 
  public inherited sharing class ams_UTL_SearchStringBuilder {
 
+    //constants
+    private static final String EMPTY_STRING = '';
+    private static final String EMPTY_STRING_1 = ' ';
+    private static final String COMMA = ',';
+
     /**
     * @description builds the base soql string (all records)
     *
@@ -21,7 +26,7 @@
         return String.format(
             'SELECT {0} FROM {1}',
             new List<String>{
-                String.join(defaultFields,ams_UTL_Constants.COMMA),
+                String.join(defaultFields,COMMA),
                 objectName
             }
         );
@@ -72,7 +77,7 @@
                 soqlSearch(defaultFields,objectName),
                 String.join(
                     conditions,
-                    ams_UTL_Constants.EMPTY_STRING_1 + operator + ams_UTL_Constants.EMPTY_STRING_1
+                    EMPTY_STRING_1 + operator + EMPTY_STRING_1
                 )
             }
         );
@@ -96,7 +101,7 @@
             defaultFields,
             objectName,
             new List<String>{ condition },
-            ams_UTL_Constants.EMPTY_STRING
+            EMPTY_STRING
         );
     }
 
