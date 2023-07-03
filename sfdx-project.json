@@ -8,7 +8,7 @@
             "default": true
         },
         {
-            "path": "./ams-activity-datable",
+            "path": "./ams-activity-datatable",
             "package": "AMSActivityDatatable",
             "versionName": "AMS Activity Datatable - July 2023",
             "versionNumber": "1.0.0.NEXT",
