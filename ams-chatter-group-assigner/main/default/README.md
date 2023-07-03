@@ -1,0 +1,1 @@
+# ams-chatter-group-assigner

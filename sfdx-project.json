@@ -1,0 +1,80 @@
+{
+  "packageDirectories": [
+    {
+		"path": "./ams-base-code",
+		"package": "AMSBaseCode",
+		"versionName": "AMS Base Code - July 2023",
+		"versionNumber": "1.0.0.NEXT",
+		"default": true
+  	},
+  	{
+		"path": "./ams-activity-datable",
+		"package": "AMSActivityDatatable",
+		"versionName": "AMS Activity Datatable - July 2023",
+		"versionNumber": "1.0.0.NEXT",
+		"default": false,
+		"dependencies": [
+			{
+				"package": "AMSBaseCode",
+				"versionNumber": "1.0.0.LATEST"
+			}
+      ]
+  	},
+  	{
+		"path": "./ams-chatter-group-assigner",
+		"package": "AMSChatterGroupAssigner",
+		"versionName": "AMS Chatter Group Assigner - July 2023",
+		"versionNumber": "1.0.0.NEXT",
+		"default": false,
+		"dependencies": [
+			{
+				"package": "AMSBaseCode",
+				"versionNumber": "1.0.0.LATEST"
+			}
+      ]
+  	},
+  	{
+		"path": "./ams-dormant-user-emailer",
+		"package": "AMSDormantUserEmailer",
+		"versionName": "AMS Dormant User Emailer - July 2023",
+		"versionNumber": "1.0.0.NEXT",
+		"default": false,
+		"dependencies": [
+			{
+				"package": "AMSBaseCode",
+				"versionNumber": "1.0.0.LATEST"
+			}
+      ]
+  	},
+  	{
+		"path": "./ams-file-disconnector",
+		"package": "AMSFileDisconnector",
+		"versionName": "AMS File Disconnector - July 2023",
+		"versionNumber": "1.0.0.NEXT",
+		"default": false,
+		"dependencies": [
+			{
+				"package": "AMSBaseCode",
+				"versionNumber": "1.0.0.LATEST"
+			}
+      ]
+  	},
+  	{
+		"path": "./ams-view-logger",
+		"package": "AMSViewLogger",
+		"versionName": "AMS View Logger - July 2023",
+		"versionNumber": "1.0.0.NEXT",
+		"default": false,
+		"dependencies": [
+			{
+				"package": "AMSBaseCode",
+				"versionNumber": "1.0.0.LATEST"
+			}
+      ]
+  	}
+  ],
+  "name": "ams-assets",
+  "namespace": "",
+  "sfdcLoginUrl": "https://login.salesforce.com",
+  "sourceApiVersion": "57.0"
+}
