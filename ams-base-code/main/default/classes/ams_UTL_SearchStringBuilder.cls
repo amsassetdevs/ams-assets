@@ -17,7 +17,7 @@
     * @param defaultFields fields to query
     * @param objectName object to get records from
     *
-    * @return base query string
+    * @return `String` base query string
     */
     public static String soqlSearch(
         List<String> defaultFields,
@@ -39,7 +39,7 @@
     * @param objectName object to get records from
     * @param limitValue number of records
     *
-    * @return base query string with limit
+    * @return `String` base query string with limit
     */
     public static String soqlSearch(
         List<String> defaultFields,
@@ -63,7 +63,7 @@
     * @param conditions list of conditions
     * @param operator operator to use in conditions
     *
-    * @return query string
+    * @return `String` query string
     */
     public static String soqlSearch(
         List<String> defaultFields,
@@ -90,7 +90,7 @@
     * @param objectName object to get records from
     * @param condition singular condition
     *
-    * @return query string
+    * @return `String` query string
     */
     public static String soqlSearch(
         List<String> defaultFields,
