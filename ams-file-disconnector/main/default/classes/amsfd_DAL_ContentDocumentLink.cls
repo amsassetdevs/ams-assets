@@ -14,7 +14,7 @@ public inherited sharing class amsfd_DAL_ContentDocumentLink {
      /**
      * @description
      *
-     * @return  `List<String>`
+     * @return  `List<String>` - List of field names to be queried 
      */
     private static List<String> getDefaultFields(){
         return new List<String>{
@@ -31,9 +31,9 @@ public inherited sharing class amsfd_DAL_ContentDocumentLink {
      /**
      * @description 
      *
-     * @param recordId 
+     * @param recordId - Id of the current record
      *
-     * @return  `List<ContentDocumentLink>`
+     * @return  `List<ContentDocumentLink>` - List of Content Document Links Related to Record that is not a note
      */
 
     public static List<ContentDocumentLink> getCDLinksByLinkedEntityId(String recordId){
