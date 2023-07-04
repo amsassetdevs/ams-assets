@@ -13,15 +13,15 @@
             if(handlers == null){
                 handlers = new Map<String,ams_UTL_TriggerHandler>();
 
-                for(ams_Trigger_Configuration__mdt config : [
-                    SELECT ams_Object_Name__c, ams_Handler_Class_Name__c
-                    FROM ams_Trigger_Configuration__mdt
-                    WHERE ams_Is_Active__c = true
+                for(ams_TriggerConfiguration__mdt config : [
+                    SELECT ams_ObjectName__c, ams_HandlerClassName__c
+                    FROM ams_TriggerConfiguration__mdt
+                    WHERE ams_IsActive__c = true
                 ]){
-                    Type handlerType = Type.forName(config.ams_Handler_Class_Name__c);
+                    Type handlerType = Type.forName(config.ams_HandlerClassName__c);
                     if(handlerType != null){
                         handlers.put(
-                            config.ams_Object_Name__c,
+                            config.ams_ObjectName__c,
                             (ams_UTL_TriggerHandler) handlerType.newInstance()
                         );
                     }

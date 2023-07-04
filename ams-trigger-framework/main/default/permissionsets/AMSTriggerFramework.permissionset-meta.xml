@@ -10,7 +10,7 @@
     </classAccesses>
     <customMetadataTypeAccesses>
         <enabled>true</enabled>
-        <name>ams_Trigger_Configuration__mdt</name>
+        <name>ams_TriggerConfiguration__mdt</name>
     </customMetadataTypeAccesses>
     <description>Assign this permission set after installing AMSTriggerFramework unlocked package.</description>
     <hasActivationRequired>false</hasActivationRequired>

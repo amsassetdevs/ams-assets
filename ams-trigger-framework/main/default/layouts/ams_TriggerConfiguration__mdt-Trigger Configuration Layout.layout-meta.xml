@@ -16,15 +16,15 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Required</behavior>
-                <field>ams_Object_Name__c</field>
+                <field>ams_ObjectName__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Required</behavior>
-                <field>ams_Handler_Class_Name__c</field>
+                <field>ams_HandlerClassName__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>ams_Is_Active__c</field>
+                <field>ams_IsActive__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
