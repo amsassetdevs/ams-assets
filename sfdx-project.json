@@ -8,6 +8,13 @@
             "default": true
         },
         {
+            "path": "./ams-trigger-framework",
+            "package": "AMSTriggerFramework",
+            "versionName": "AMS Trigger Framework - July 2023",
+            "versionNumber": "1.0.0.NEXT",
+            "default": false
+        },
+        {
             "path": "./ams-activity-datatable",
             "package": "AMSActivityDatatable",
             "versionName": "AMS Activity Datatable - July 2023",
