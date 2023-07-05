@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>amsvl_Error_Message</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Error Message</shortDescription>
+        <value>Hmm there seems to be an issue...please contact your System Administrator.</value>
+    </labels>
+    <labels>
+        <fullName>amsvl_Error_Title</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Error Title</shortDescription>
+        <value>Sorry!</value>
+    </labels>
+    <labels>
+        <fullName>amsvl_Error_Variant</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Error Variant</shortDescription>
+        <value>error</value>
+    </labels>
+    <labels>
+        <fullName>amsvl_Label_TotalNumberofViewers</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Total Number of Viewers</shortDescription>
+        <value>Total Number of Viewers</value>
+    </labels>
+    <labels>
+        <fullName>amsvl_Label_TotalNumberofViews</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Total Number of Views</shortDescription>
+        <value>Total Number of Views</value>
+    </labels>
+    <labels>
+        <fullName>amsvl_Label_ViewLogsSummary</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>View Logs Summary</shortDescription>
+        <value>View Logs Summary</value>
+    </labels>
+</CustomLabels>

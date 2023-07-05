@@ -1,0 +1,36 @@
+<template>
+    <article class="slds-card">
+       <div class="slds-card__header slds-grid">
+          <header class="slds-media slds-media_center slds-has-flexi-truncate">
+            <div class="slds-media__figure">
+                <lightning-icon icon-name="action:preview" size="x-small"></lightning-icon>
+            </div>
+            <div class="slds-media__body">
+              <h2 class="slds-card__header-title">
+                <span>{labels.ViewLogsSummary}</span>
+              </h2>
+            </div>
+          </header>
+        </div>
+       <div class="slds-card__body slds-card__body_inner">
+          <div class="slds-wrap">
+          <div class="slds-grid slds-grid_vertical-align-start">
+             <div class="slds-col slds-size_1-of-2">
+                <div class="slds-text-align_center slds-p-left_x-small slds-p-right_x-small">{labels.TotalNumberofViews}</div>
+             </div>
+             <div class="slds-col slds-size_1-of-2">
+                <div class="slds-text-align_center slds-p-left_x-small slds-p-right_x-small">{labels.TotalNumberofViewers}</div>
+             </div>
+             </div>
+             <div class="slds-grid slds-grid_vertical-align-middle">
+                <div class="slds-col slds-size_1-of-2 slds-text-heading_large">
+                   <div class="slds-text-align_center slds-text-color_success"><b>{totalViewCount}</b></div>
+                </div>
+                <div class="slds-col slds-size_1-of-2 slds-text-heading_large">
+                   <div class="slds-text-align_center slds-text-color_success"><b>{totalViewerCount}</b></div>
+                </div>
+              </div>
+            </div>
+       </div> 
+    </article>
+</template>
