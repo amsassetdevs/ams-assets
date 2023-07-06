@@ -1,5 +1,7 @@
-/**
- * 
+ /**
+ * @description 
+ * @author Angelika Galang
+ * @since July 5, 2023
  */
 import { LightningElement, api } from 'lwc';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
@@ -26,6 +28,8 @@ export default class Amsvl_lwcViewLogs extends LightningElement {
     //view counts
     totalViewCount = 0;
     totalViewerCount = 0;
+
+    isLoading = true;
 
     /**
      * 
@@ -54,6 +58,9 @@ export default class Amsvl_lwcViewLogs extends LightningElement {
                 ErrorVariant
             );
         })
+        .finally(() => {
+            this.isLoading = false;
+        });
     }
 
     /**

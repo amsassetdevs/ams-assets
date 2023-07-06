@@ -42,4 +42,39 @@
         <shortDescription>View Logs Summary</shortDescription>
         <value>View Logs Summary</value>
     </labels>
+    <labels>
+        <fullName>amsvl_Label_ViewAll</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>View All</shortDescription>
+        <value>View All</value>
+    </labels>
+    <labels>
+        <fullName>amsvl_Error_NothingToSee</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Nothing To See</shortDescription>
+        <value>Nothing to see here</value>
+    </labels>
+    <labels>
+        <fullName>amsvl_Error_NothingToSeeMessage</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Nothing To See Message</shortDescription>
+        <value>There&apos;s nothing in your list yet. Please make sure AMS - ViewBuddy component is added on your record page to successfully save view logs.</value>
+    </labels>
+    <labels>
+        <fullName>amsvl_Label_Items</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Items</shortDescription>
+        <value>items</value>
+    </labels>
+    <labels>
+        <fullName>amsvl_Label_Updated</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Updated</shortDescription>
+        <value>Updated</value>
+    </labels>
 </CustomLabels>

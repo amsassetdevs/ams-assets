@@ -1,0 +1,45 @@
+<template>
+    <article class="slds-card slds-card_boundary slds-is-absolute slds-size_full">
+      <lightning-spinner if:true={isLoading} alternative-text="Loading" size="xx-small"></lightning-spinner>
+        <div class="slds-page-header">
+            <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                <div class="slds-media__figure">
+                    <lightning-icon icon-name="action:preview" size="xx-small"></lightning-icon>
+                </div>
+                <div class="slds-media__body">
+                    <lightning-breadcrumbs>
+                        <template for:each={cardBreadcrumbs} for:item="crumbs">
+                            <lightning-breadcrumb
+                                key={crumbs.id}
+                                data-id={crumbs.id}
+                                label={crumbs.label}
+                                name={crumbs.name}
+                                onclick={handleNavigateTo}
+                            >
+                            </lightning-breadcrumb>
+                        </template>
+                    </lightning-breadcrumbs>
+                    <h2 class="slds-card__header-title">
+                        <span>{cardTitle}</span>
+                    </h2>
+                    <span class="slds-text-body_small">{dataLength} {labels.Items} • {labels.Updated} {lastUpdated}</span>
+                </div>
+            </header>
+        </div>
+        <div class="slds-card__body slds-border_top slds-border_bottom-none slds-m-vertical_none card-body-size">
+            <div if:true={showIllustration} class="slds-illustration slds-illustration_large slds-m-top_large" aria-hidden="true">
+                <img src="/img/chatter/Desert.svg" class="slds-illustration__svg" alt=""/>
+                <div class="slds-text-longform">
+                    <h3 class="slds-text-heading_medium">{labels.NothingToSee}</h3>
+                    <p class="slds-text-body_regular">{labels.NothingToSeeMessage}</p>
+                </div>
+            </div>
+            <c-amsvl_lwc-view-logs-table 
+                infinite-loading={infiniteLoading}
+                record-id={recordId}
+                row-limit={rowLimit}
+                onviewlogsload={handleViewLogsLoad}>
+            </c-amsvl_lwc-view-logs-table>
+        </div>
+    </article>
+</template>

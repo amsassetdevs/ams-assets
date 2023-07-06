@@ -1,0 +1,12 @@
+<template>
+    <lightning-datatable
+        if:true={showTable}
+        key-field="id"
+        columns={viewLogColumns}
+        data={viewLogs}
+        onloadmore={handleLoadMore}
+        enable-infinite-loading={infiniteLoading}
+        show-row-number-column
+        hide-checkbox-column>
+    </lightning-datatable>
+</template>

@@ -24,8 +24,21 @@
             amsvl_ViewLog__c.amsvl_ObjectName__c.getDescribe().getLocalName(),
             amsvl_ViewLog__c.amsvl_RecordId__c.getDescribe().getLocalName(),
             amsvl_ViewLog__c.amsvl_User__c.getDescribe().getLocalName(),
+            'amsvl_User__r.Name',
             amsvl_ViewLog__c.amsvl_ViewCount__c.getDescribe().getLocalName()
         };
+    }
+
+    public static Integer getViewLogsCountByRecordId(String recordId){
+        return Database.countQuery(
+            ams_UTL_SearchStringBuilder.soqlSearch(
+                new List<String>{
+                    'count()'
+                },
+                OBJECT_NAME,
+                'amsvl_RecordId__c =: recordId'
+            )
+        );
     }
 
     /**
@@ -45,7 +58,31 @@
         );
     }
 
-    public static List<amsvl_ViewLog__c> getViewLogsByUserAndRecordId(String recordId,String userId){
+    /**
+     * @description 
+     *
+     * @param recordId 
+     *
+     * @return  `List<amsvl_ViewLog__c>`
+     */
+    public static List<amsvl_ViewLog__c> getViewLogsByRecordId(
+        String recordId,
+        Integer limitSize,
+        Integer offsetSize
+    ){
+        return Database.query(
+            ams_UTL_SearchStringBuilder.soqlSearch(
+                getDefaultFields(),
+                OBJECT_NAME,
+                'amsvl_RecordId__c =: recordId ORDER BY amsvl_LastVisited__c DESC LIMIT :limitSize OFFSET :offsetSize'
+            )
+        );
+    }
+
+    public static List<amsvl_ViewLog__c> getViewLogsByUserAndRecordId(
+        String recordId,
+        String userId
+    ){
         return Database.query(
             ams_UTL_SearchStringBuilder.soqlSearch(
                 getDefaultFields(),

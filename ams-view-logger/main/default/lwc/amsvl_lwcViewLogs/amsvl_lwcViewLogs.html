@@ -1,5 +1,6 @@
 <template>
     <article class="slds-card">
+      <lightning-spinner if:true={isLoading} alternative-text="Loading" size="xx-small"></lightning-spinner>
        <div class="slds-card__header slds-grid">
           <header class="slds-media slds-media_center slds-has-flexi-truncate">
             <div class="slds-media__figure">

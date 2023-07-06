@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>57.0</apiVersion>
+     <isExposed>true</isExposed>
+    <targets>
+        <target>lightning__Tab</target>
+    </targets>
+    <masterLabel>AMS - ViewBuddyTab</masterLabel>
+    <description>Shows a full list view in a separate tab of users who viewed a recod.</description>
+</LightningComponentBundle>

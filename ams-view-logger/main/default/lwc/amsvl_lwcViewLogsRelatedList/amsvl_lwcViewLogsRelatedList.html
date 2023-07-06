@@ -1,3 +1,32 @@
 <template>
-    
+    <article class="slds-card slds-card_boundary">
+      <lightning-spinner if:true={isLoading} alternative-text="Loading" size="xx-small"></lightning-spinner>
+        <div class="slds-page-header">
+            <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                <div class="slds-media__figure">
+                    <lightning-icon icon-name="action:preview" size="xx-small"></lightning-icon>
+                </div>
+                <div class="slds-media__body">
+                    <h2 class="slds-card__header-title">
+                        <a class="slds-card__header-link slds-truncate" title={cardTitle} onclick={handleViewAll}>
+                            <span>{cardTitle}</span>
+                        </a>
+                    </h2>
+                </div>
+            </header>
+        </div>
+        <div class="slds-card__body slds-border_top slds-border_bottom-none slds-m-vertical_none">
+            <c-amsvl_lwc-view-logs-table 
+                infinite-loading={infiniteLoading}
+                record-id={recordId}
+                row-limit={rowLimit}
+                onviewlogsload={handleViewLogsLoad}>
+            </c-amsvl_lwc-view-logs-table>
+        </div>
+        <footer if:true={showFooter} class="slds-card__footer slds-m-top_none">
+            <a class="slds-card__footer-action" title={labels.ViewAll} onclick={handleViewAll}>
+                <span>{labels.ViewAll}</span>
+            </a>
+        </footer>
+    </article>
 </template>
