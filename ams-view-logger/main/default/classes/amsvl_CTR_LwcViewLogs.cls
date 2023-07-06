@@ -1,9 +1,5 @@
 public with sharing class amsvl_CTR_LwcViewLogs {
-
-    private static final String STR_ID = 'Id';
-    private static final String STR_NAME = 'name';
-    private static final String STR_AUTONUMBER = 'autonumber';
-    private static final String STR_UNIQUE = 'unique';
+    
     private static final String STR_TOTALVIEW = 'totalViewCount';
     private static final String STR_TOTALVIEWER = 'totalViewerCount';
 
@@ -56,34 +52,6 @@ public with sharing class amsvl_CTR_LwcViewLogs {
         );
         
         return result;
-    }
-
-    @AuraEnabled(cacheable=true)
-    public static String getRecordFieldIdentifier(
-        String objectName
-    ){
-        Map<String,String> fields = new Map<String,String>(); //priority: name -> autonumber -> unique
-        
-        SObjectType sObjType = Schema.getGlobalDescribe().get(objectName);
-        Map<String, Schema.SObjectField> mapFields = sObjType.getDescribe().fields.getMap();
-        for(Schema.SObjectField objField : mapFields.values()){
-            String fieldName = objField.getDescribe().getName();
-
-            if(!fields.containsKey(STR_NAME) && objField.getDescribe().isNameField()){
-                fields.put(STR_NAME,fieldName); //first prio, no need to iterate when found
-                break;
-            }else if(!fields.containsKey(STR_AUTONUMBER) && objField.getDescribe().isAutoNumber()){
-                fields.put(STR_AUTONUMBER,fieldName); 
-            }else if(!fields.containsKey(STR_UNIQUE) && objField.getDescribe().isUnique()){
-                fields.put(STR_UNIQUE,fieldName);
-            }
-        }
-
-        return 
-            fields.containsKey(STR_NAME) ? fields.get(STR_NAME) :
-            fields.containsKey(STR_AUTONUMBER) ? fields.get(STR_AUTONUMBER) :
-            fields.containsKey(STR_UNIQUE) ? fields.get(STR_UNIQUE) :
-            STR_ID; //set Id as default when no other available fields
     }
 
     @AuraEnabled(cacheable=true)

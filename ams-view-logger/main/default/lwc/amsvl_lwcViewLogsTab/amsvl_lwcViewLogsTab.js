@@ -8,12 +8,13 @@ import { NavigationMixin, CurrentPageReference } from 'lightning/navigation';
 import { getObjectInfo } from 'lightning/uiObjectInfoApi';
 import { getRecord } from 'lightning/uiRecordApi';
 import VIEW_LOG from '@salesforce/schema/amsvl_ViewLog__c';
+import NameMapping from '@salesforce/label/c.amsvl_JSON_NameMapping';
 import NothingToSee from '@salesforce/label/c.amsvl_Error_NothingToSee';
 import NothingToSeeMessage from '@salesforce/label/c.amsvl_Error_NothingToSeeMessage';
 import Items from '@salesforce/label/c.amsvl_Label_Items';
 import Updated from '@salesforce/label/c.amsvl_Label_Updated';
-import getRecordFieldIdentifier from '@salesforce/apex/amsvl_CTR_LwcViewLogs.getRecordFieldIdentifier';
 
+const RECORD_FIELDS = JSON.parse(NameMapping);
 export default class Amsvl_lwcViewLogsTab extends NavigationMixin(LightningElement) {  
     //labels initialization
     labels = {
@@ -29,8 +30,6 @@ export default class Amsvl_lwcViewLogsTab extends NavigationMixin(LightningEleme
 
     //card details
     recordId;
-    recordData;
-    recordObject;
     cardBreadcrumbs = [];
     currentPageReference = null;
 
@@ -59,36 +58,39 @@ export default class Amsvl_lwcViewLogsTab extends NavigationMixin(LightningEleme
     @wire(getRecord, { recordId: '$recordId', layoutTypes: ['Full'], modes: ['View'] })
     wiredRecord({ error, data }) {
         if (data) {
-            this.recordData = data;
-            this.recordObject = this.recordData.apiName;
             // get values from fields based on object API name
+            console.log(JSON.stringify(data.fields));
+            let recordFieldValues = [];
+            let objectName = data.apiName;
+            if(objectName in RECORD_FIELDS){
+                RECORD_FIELDS[objectName].forEach(fieldName =>{
+                    if(data.fields[fieldName].value){
+                        recordFieldValues.push(data.fields[fieldName].value);
+                    }
+                });
+            }
+
             this.cardBreadcrumbs = [
                 {
-                    label: this.recordObject,
+                    label: objectName,
                     name: 'objectName',
-                    id: this.recordObject
+                    id: objectName
+                },
+                {
+                    label: 
+                        recordFieldValues.length > 0 ? 
+                        recordFieldValues.join(' ') : //get custom label fields defined
+                        data.fields.Name ? 
+                        data.fields.Name.value : //get name field if no custom label
+                        data.id, //default to id if name is also unavailable
+                    name: 'recordName',
+                    id: this.recordId
                 }
             ];
         } else if (error) {
             
         }
     };
-
-    
-    @wire(getRecordFieldIdentifier, { objectName: '$recordObject' })
-    wiredRecordField({ error, data }) {
-        if (data) {
-            this.cardBreadcrumbs = [
-                ...this.cardBreadcrumbs,
-                {
-                    label: this.recordData.fields[data].value,
-                    name: 'recordName',
-                    id: this.recordId
-                }
-            ];
-        } else if (error) {
-        }
-    }
 
     handleViewLogsLoad(event){
         this.dataLength = event.detail.dataLength;

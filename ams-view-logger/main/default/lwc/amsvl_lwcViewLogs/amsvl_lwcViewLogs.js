@@ -4,6 +4,7 @@
  * @since July 5, 2023
  */
 import { LightningElement, api } from 'lwc';
+import { NavigationMixin } from 'lightning/navigation';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import ErrorMessage from '@salesforce/label/c.amsvl_Error_Message';
 import ErrorTitle from '@salesforce/label/c.amsvl_Error_Title';
@@ -14,7 +15,7 @@ import ViewLogsSummary from '@salesforce/label/c.amsvl_Label_ViewLogsSummary';
 import getViewLogsInfo from '@salesforce/apex/amsvl_CTR_LwcViewLogs.getViewLogsInfo';
 
 
-export default class Amsvl_lwcViewLogs extends LightningElement {
+export default class Amsvl_lwcViewLogs extends NavigationMixin(LightningElement) {
     //globally exposed record id
     @api recordId;
     
@@ -60,6 +61,18 @@ export default class Amsvl_lwcViewLogs extends LightningElement {
         })
         .finally(() => {
             this.isLoading = false;
+        });
+    }
+
+    handleNavigate(){
+        this[NavigationMixin.Navigate]({
+            type: 'standard__navItemPage',
+            attributes: {
+                apiName: 'amsvl_RelatedViewLogs'
+            },
+            state: {
+                amsvl__recordId: this.recordId
+            }
         });
     }
 
