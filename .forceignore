@@ -3,6 +3,9 @@
 #
 
 package.xml
+**objectTranslations
+**profiles
+**settings
 
 # LWC configuration files
 **/jsconfig.json
