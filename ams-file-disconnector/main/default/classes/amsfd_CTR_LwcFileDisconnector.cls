@@ -15,7 +15,17 @@ public class amsfd_CTR_LwcFileDisconnector {
         List<ContentDocumentLink> CDLs = amsfd_DAL_ContentDocumentLink.getCDLinksByLinkedEntityId(recordId);
         return CDLs;
     }
-    
+ 
+    @AuraEnabled
+    public static String getRecordOwnerId(String recordId)
+    {
+        Id recId = Id.valueof(recordId);
+        String objectName = recId.getSObjectType().getDescribe().getName();
+        sObject testObj = amsfd_DAL_ContentDocumentLink.getOwnerId(recordId,objectName);
+        System.debug('adrian test ' + testObj.get('OwnerId'));
+        //String recordOwnerId= testObj.get('OwnerId');
+        return String.valueof(testObj.get('OwnerId'));
+    }
     /**
      * 
      * @param contDoc  - List of Content Document Links to be deleted or to be disassociated to the record 

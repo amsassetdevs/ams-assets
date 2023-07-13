@@ -2,6 +2,7 @@ import { LightningElement,api,wire } from 'lwc';
 import { getRecord,getFieldValue} from 'lightning/uiRecordApi';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import getContentDocs from '@salesforce/apex/amsfd_CTR_LwcFileDisconnector.getContentDocs';
+import getOwnerRecordId from '@salesforce/apex/amsfd_CTR_LwcFileDisconnector.getRecordOwnerId';
 import deleteContentDocumentLink from '@salesforce/apex/amsfd_CTR_LwcFileDisconnector.deleteContentDocumentLink';
 import { refreshApex } from '@salesforce/apex';
 import OWNER_ID_FIELD from '@salesforce/schema/Contact.OwnerId';
@@ -51,20 +52,30 @@ export default class LwcFileDisconnector extends NavigationMixin (LightningEleme
     hasRecords = false;
     @api recordId;
     userId = USERID;
+    recordOwnerId;
     isOwner;
     title;
     resultRecord;
     showLoadingSpinner = false;
     helpText = HELP_TEXT;
     noFile = NO_FILE;
-    test = {"fieldApiName":"OwnerId","objectApiName":"Contact"};
+    //test = {"fieldApiName":"OwnerId","objectApiName":"Contact"};
     connectedCallback()
     {
-        console.log('Test id' + JSON.stringify(OWNER_ID_FIELD));
-
+        getOwnerRecordId({recordId: this.recordId})
+        .then((result) => {
+            this.recordOwnerId = result;
+            console.log(result);
+        })
+        .catch((error) => {
+            console.log('In connected call back error....');
+            this.error = error;
+            // This way you are not to going to see [object Object]
+            console.log('Error is', this.error); 
+        });
     }
 
-    tmdOwnerId;
+    /* tmdOwnerId;
     @wire(getRecord, { recordId: '$recordId', fields: test })
     tmdData({ error, data }) 
     {
@@ -76,14 +87,30 @@ export default class LwcFileDisconnector extends NavigationMixin (LightningEleme
                 console.log('Error: ' + JSON.parse(JSON.stringify(error)));
         }
     }
-    
+     */
     //console.log('ownerId' + this.tmdOwnerId);
+
+        
+    /* recOwnerId;
+    @wire(getOwnerRecordId,{recordId:'$recordId'})
+    tmdData({ error, data }) {
+        if(data){
+                    this.recOwnerId = data;
+                    console.log('test adrian' + data);
+            }
+        else if(error){
+                console.log('Error: ' + JSON.parse(JSON.stringify(error)));
+        }
+    }
+     */
+   
+   // console.log('ID MAYTA MAO NANI' +  this.recOwnerId);
 
     @wire(getContentDocs,{recordId : '$recordId'})
     wiredRecord(result)
     {
         this.refreshTable = result;
-        this.isOwner= this.tmdOwnerId == this.userId ? true: false;  
+        this.isOwner= this.recordOwnerId == this.userId ? true: false;  
         if(result.data)
         {
             this.data = result.data;
@@ -98,7 +125,7 @@ export default class LwcFileDisconnector extends NavigationMixin (LightningEleme
                     CreatedDate:conDocLink.ContentDocument.CreatedDate,
                 };
             });
-            this.filteredData =  this.resultData.filter(owner => owner.FileOwnerId != this.tmdOwnerId);
+            this.filteredData =  this.resultData.filter(owner => owner.FileOwnerId != this.recordOwnerId);
             this.filteredData = JSON.parse(JSON.stringify(this.filteredData));
             this.record = [...this.record, ...this.filteredData];
             this.title = "Files I Do Not Own (" +  this.filteredData.length + ")";

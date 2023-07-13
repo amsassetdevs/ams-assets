@@ -1,32 +1,36 @@
 <template>
-    <div class='slds-card slds-card_boundary slds-theme_shade'>
-        <lightning-card variant="Narrow" title={title} icon-name="standard:file">
-            <lightning-helptext content={helpText} 
-                slot="actions">
-            </lightning-helptext>
-            <lightning-button label="Disassociate" 
-                    title="Disassociate" class="slds-m-left_x-small" 
-                    slot="actions"
-                    onclick={handleButtonAction} ></lightning-button>
-            <div style="width: auto;">
-                <template if:true={hasRecords}>
-                    <lightning-datatable
-                            key-field="id"
-                            data={record}
-                            columns={columns}
-                            onrowaction={handleRowActions}
-                            onrowselection={getSelectedRecords}>
-                    </lightning-datatable>
-                </template>
-                
-                <template if:false={hasRecords}>
-                    <div class="slds-text-align_center slds-text-title_bold">{noFile}</div>
-                </template>
-            </div>
-            <!-- Spinner -->
-            <div if:true={showLoadingSpinner}>
-                <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
-            </div>
-        </lightning-card>
-    </div>
+    <template if:true={isOwner}>
+        <div class='slds-card slds-card_boundary slds-theme_shade'>
+            <lightning-card variant="Narrow" title={title} icon-name="standard:file">
+                <div if:true={hasRecords}>
+                    <lightning-helptext content={helpText} 
+                        slot="actions">
+                    </lightning-helptext>
+                    <lightning-button label="Disassociate" 
+                            title="Disassociate" class="slds-m-left_x-small" 
+                            slot="actions"
+                            onclick={handleButtonAction} ></lightning-button>
+                </div>
+                <div style="width: auto;">
+                    <template if:true={hasRecords}>
+                        <lightning-datatable
+                                key-field="id"
+                                data={record}
+                                columns={columns}
+                                onrowaction={handleRowActions}
+                                onrowselection={getSelectedRecords}>
+                        </lightning-datatable>
+                    </template>
+                    
+                    <!-- <template if:false={hasRecords}>
+                        <div class="slds-text-align_center slds-text-title_bold">{noFile}</div>
+                    </template> -->
+                </div>
+                <!-- Spinner -->
+                <div if:true={showLoadingSpinner}>
+                    <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
+                </div>
+            </lightning-card>
+        </div>
+    </template>
 </template>

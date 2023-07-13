@@ -49,4 +49,15 @@ public inherited sharing class amsfd_DAL_ContentDocumentLink {
             )
         );
     }
+
+    public static sObject getOwnerId (String recordId, String objectName)
+    {
+        return Database.query(
+            ams_UTL_SearchStringBuilder.soqlSearch(
+               new List<String>{'Id','OwnerId'},
+               objectName,
+                'Id =: recordId'
+            )
+        );
+    }
 }
