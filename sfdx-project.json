@@ -5,7 +5,7 @@
             "package": "AMSBaseCode",
             "versionName": "AMS Base Code - July 2023",
             "versionNumber": "1.0.0.NEXT",
-            "default": true
+            "default": false
         },
         {
             "path": "./ams-trigger-framework",
@@ -58,7 +58,7 @@
             "package": "AMSFileDisconnector",
             "versionName": "AMS File Disconnector - July 2023",
             "versionNumber": "1.0.0.NEXT",
-            "default": false,
+            "default": true,
             "dependencies": [
                 {
                     "package": "AMSBaseCode",
