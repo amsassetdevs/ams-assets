@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>amsadt_TableIcon__c</fullName>
+    <description>It is used for determining the icon for the Activity Table. Check here https://www.lightningdesignsystem.com/icons/</description>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>Indicate the icon to be used for Activity Table</inlineHelpText>
+    <label>Table Icon</label>
+    <length>255</length>
+    <required>true</required>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

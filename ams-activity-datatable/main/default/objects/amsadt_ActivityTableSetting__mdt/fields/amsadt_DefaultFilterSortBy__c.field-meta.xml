@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>amsadt_DefaultFilterSortBy__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Used for showing the Sort By Filter in Activity Table</description>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>Check if you want to show Sort By filter</inlineHelpText>
+    <label>Default Filter: Sort By</label>
+    <type>Checkbox</type>
+</CustomField>

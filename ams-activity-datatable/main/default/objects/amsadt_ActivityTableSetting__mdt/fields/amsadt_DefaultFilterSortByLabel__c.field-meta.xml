@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>amsadt_DefaultFilterSortByLabel__c</fullName>
+    <description>Used for setting up the label for Sort By filter in Activity Table</description>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>Indicate the label for Sort By filter</inlineHelpText>
+    <label>Default Filter: Sort By Label</label>
+    <length>255</length>
+    <required>false</required>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

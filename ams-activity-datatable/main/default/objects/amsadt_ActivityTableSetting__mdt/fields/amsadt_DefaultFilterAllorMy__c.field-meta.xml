@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>amsadt_DefaultFilterAllorMy__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Used for showing the All or My Filter in Activity Table</description>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>Check if you want to show All or My Filter</inlineHelpText>
+    <label>Default Filter: All or My</label>
+    <type>Checkbox</type>
+</CustomField>

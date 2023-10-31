@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>amsadt_TableColumns__c</fullName>
+    <description>This is the columns for Activity Table in JSON format e.g
+
+{&quot;fieldName&quot;:&quot;Id&quot;, &quot;label&quot;: &quot;Subject&quot;, &quot;type&quot;: &quot;url&quot;,
+&quot;typeAttributes&quot;: {
+&quot;label&quot;: {
+&quot;fieldName&quot;: &quot;Subject&quot;
+}
+}},
+{&quot;fieldName&quot; : &quot;CreatedDate&quot;, &quot;label&quot; : &quot;Created Date&quot;, &quot;type&quot;: &quot;date-local&quot;, &quot;typeAttributes&quot;:{
+&quot;month&quot;: &quot;2-digit&quot;,
+&quot;day&quot;: &quot;2-digit&quot;
+}},
+{&quot;fieldName&quot; : &quot;CreatedBy.Name&quot;, &quot;label&quot; : &quot;Created By&quot;},</description>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>indicate columns for Activity Table in JSON format</inlineHelpText>
+    <label>Table Columns</label>
+    <length>32768</length>
+    <type>LongTextArea</type>
+    <visibleLines>3</visibleLines>
+</CustomField>

@@ -1,0 +1,65 @@
+<template>
+    <div class='slds-card slds-card_boundary slds-theme_shade'>
+        <lightning-card variant='Narrow' title={tableTitleWithCount} icon-name={tableIcon} class="slds-p-around_small lgc-bg">
+            <div class='c-container slds-theme_shade'>
+                <lightning-layout>
+                    <lightning-layout-item style={activityFilterWidth} flexibility="auto" padding="around-small" if:true={showDateRange}>
+                        <lightning-combobox
+                            name="dateRange" 
+                            label={dateRangeLabel}
+                            placeholder={dateRangePlaceholder}
+                            options={dateRangePicklistValues} 
+                            onchange={handleValueChange}
+                        ></lightning-combobox>
+                    </lightning-layout-item>
+
+                    <lightning-layout-item style={activityFilterWidth} flexibility="auto" padding="around-small" if:true={showDateSort}>
+                        <lightning-combobox
+                            name="dateSort" 
+                            label={dateSortLabel}
+                            placeholder={dateSortPlaceholder}
+                            options={dateSortPicklistValues} 
+                            onchange={handleValueChange}
+                        ></lightning-combobox>
+                    </lightning-layout-item>
+
+                    <lightning-layout-item style={activityFilterWidth} flexibility="auto" padding="around-small" if:true={showAllMyCustomers}>
+                        <lightning-combobox
+                            name="allMyCustomers" 
+                            label={allOrMyLabel} 
+                            placeholder={allOrMyPlaceholder}
+                            options={customersPicklistValues} 
+                            onchange={handleValueChange}
+                        ></lightning-combobox>
+                    </lightning-layout-item>
+
+                    <template for:each={activityFilterFields} for:item="afFields">
+                        <lightning-layout-item style={activityFilterWidth} flexibility="auto" padding="around-small" key={afFields.fieldApiName}>
+                            <lightning-combobox
+                                name={afFields.fieldApiName}
+                                label={afFields.label}
+                                placeholder={afFields.placeholder}
+                                options={afFields.options} 
+                                onchange={handleValueChange}
+                            ></lightning-combobox>
+                        </lightning-layout-item>
+                    </template>
+
+                </lightning-layout>
+                <div class="slds-m-top_medium slds-border_top" style={datatableHeight}>
+                    <lightning-datatable
+                        key-field="id"
+                        columns={columns}
+                        data={finalSObjectDataList}
+                        hide-checkbox-column
+                        load-more-offset="20"
+                        onloadmore={handleLoadMore}
+                        enable-infinite-loading show-row-number-column>
+                    </lightning-datatable>
+                    <div if:false={hasData} class="slds-align_absolute-center" style="margin:0.5rem">There's no data found</div>
+                </div>
+                <div class="slds-align_absolute-center" style="margin:0.5rem">{loadMoreStatus}</div>
+            </div>
+        </lightning-card>
+    </div>
+</template>
